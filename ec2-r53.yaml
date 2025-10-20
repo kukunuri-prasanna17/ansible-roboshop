@@ -15,6 +15,7 @@
        instance_type: t3.micro
        security_group: "{{ sg_id }}"
        image_id: "{{ ami_id }}"
+       region: us-east-1
        tags:
          Name: "{{ item }}"
       loop: "{{ instances }}"
