@@ -1,0 +1,25 @@
+- name: creating instances
+  hosts: local
+  connection: local
+  vars: 
+   ami_id: ami-09c813fb71547fc4f
+   sg_id: sg-036990b2c79305f16
+   zone_id: Z00127841VMI13X3SDGHZ
+   domain_name: daws86s.cfd
+   instances:
+   - mongodb
+   tasks:
+    - name: Launch an EC2 instance
+      amazon.aws.ec2_instance:
+       name: "{{ item }}"
+       instance_type: t2.micro
+       security_group: "{{ sg_id }}"
+       image_id: "{{ ami_id }}"
+       tags:
+         Name: "{{ item }}"
+      loop: "{{ instances }}"
+      register: ec2_output
+
+    - name: print the ec2_output
+      ansible.builtin.debug:
+        msg: "{{ ec2_output }}"
