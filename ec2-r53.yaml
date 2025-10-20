@@ -8,7 +8,7 @@
    domain_name: "daws86s.cfd"
    instances:
    - mongodb
-   tasks:
+  tasks:
     - name: Launch an EC2 instance
       amazon.aws.ec2_instance:
        name: "{{ item }}"
