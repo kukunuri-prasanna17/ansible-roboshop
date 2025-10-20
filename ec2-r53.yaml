@@ -7,10 +7,7 @@
    zone_id: Z00127841VMI13X3SDGHZ
    domain_name: "daws86s.cfd"
    instances:
-   - mongodb
    - redis
-   - mysql
-   - rabbitmq
   tasks:
     - name: Launch an EC2 instance
       amazon.aws.ec2_instance:
