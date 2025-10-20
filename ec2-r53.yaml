@@ -3,7 +3,7 @@
   connection: local
   vars: 
    ami_id: ami-09c813fb71547fc4f
-   sg_id: sg-036990b2c79305f16
+   sg_id: sg-08da864ed7845ff7e
    zone_id: Z00127841VMI13X3SDGHZ
    domain_name: "daws86s.cfd"
    instances:
