@@ -1,5 +1,5 @@
 - name: setup mongodb server
-  hosts: mongodb
+  hosts: catalogue
   become: yes
   tasks:
    - name: disable nodejs server
@@ -21,9 +21,46 @@
         shell: /sbin/nologin
         home: /app
 
-
   # Safe to remove directory, because 2nd time if we run it will download freshly. no error if does not exist
    - name: creating app directory
      ansible.builtin.file: 
        state: directory
        path: /app
+
+   - name: dowloading catalogue application
+     ansible.builtin.get_url:
+      url: https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip 
+      dest: /tmp/catalogue.zip
+
+   - name: Extarct catalogue application
+     ansible.builtin.unarchive:
+      src: unzip /tmp/catalogue.zip
+      dest: /app 
+      remote_src: yes
+
+   - name: Install nodejs dependence
+     community.general.npm: 
+        path: /app
+
+   - name: setup systemctl catalogue
+     ansible.builtin.copy:
+      src: catalogue.service
+      dest: /etc/systemd/system/catalogue.service
+  
+   -  name: creating mongo.repo
+      ansible.builtin.copy:
+       src: mongo.repo
+       dest: /etc/yum.repos.d/mongo.repo
+
+   -  name: installing client mongodb-mongosh
+      ansible.builtin.package: 
+        name: mongodb-mongosh
+        state: present
+
+   - name: connect to mongodb cataogue 
+     ansible.builtin.command: mongosh mongodb.daws86s.cfd --quiet --eval "db.getMongo().getDBNames().indexOf('catalogue')
+     register: catalogue_output
+
+   - name: checking data load
+     ansible.builtin.debug:
+      msg: "{{ catalogue_output }}"
