@@ -38,29 +38,29 @@
       dest: /app 
       remote_src: yes
 
-   - name: Install nodejs dependence
-     community.general.npm: 
-        path: /app
+  #  - name: Install nodejs dependence
+  #    community.general.npm: 
+  #       path: /app
 
-   - name: setup systemctl catalogue
-     ansible.builtin.copy:
-      src: catalogue.service
-      dest: /etc/systemd/system/catalogue.service
+  #  - name: setup systemctl catalogue
+  #    ansible.builtin.copy:
+  #     src: catalogue.service
+  #     dest: /etc/systemd/system/catalogue.service
   
-   -  name: creating mongo.repo
-      ansible.builtin.copy:
-       src: mongo.repo
-       dest: /etc/yum.repos.d/mongo.repo
+  #  -  name: creating mongo.repo
+  #     ansible.builtin.copy:
+  #      src: mongo.repo
+  #      dest: /etc/yum.repos.d/mongo.repo
 
-   -  name: installing client mongodb-mongosh
-      ansible.builtin.package: 
-        name: mongodb-mongosh
-        state: present
+  #  -  name: installing client mongodb-mongosh
+  #     ansible.builtin.package: 
+  #       name: mongodb-mongosh
+  #       state: present
 
-   - name: connect to mongodb cataogue 
-     ansible.builtin.command: mongosh mongodb.daws86s.cfd --quiet --eval "db.getMongo().getDBNames().indexOf('catalogue')
-     register: catalogue_output
+  #  - name: connect to mongodb cataogue 
+  #    ansible.builtin.command: mongosh mongodb.daws86s.cfd --quiet --eval "db.getMongo().getDBNames().indexOf('catalogue')
+  #    register: catalogue_output
 
-   - name: checking data load
-     ansible.builtin.debug:
-      msg: "{{ catalogue_output }}"
+  #  - name: checking data load
+  #    ansible.builtin.debug:
+  #     msg: "{{ catalogue_output }}"
