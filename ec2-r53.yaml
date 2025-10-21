@@ -1,3 +1,4 @@
+ 
  #pip3.9 install botocore boto3 ( needed libarary's  to connect with AWS they were written in python)
 
 - name: creating instances
@@ -8,11 +9,13 @@
    sg_id: sg-08da864ed7845ff7e
    zone_id: Z00127841VMI13X3SDGHZ
    domain_name: "daws86s.cfd"
-   instances:
-   - mongodb
-   - redis
-   - mysql
-   - rabbitmq
+    # we can instances through command-line
+    # instances:
+    #  - mongodb
+    #  - redis
+    #  - mysql
+    #  - rabbitmq
+  
   tasks:
     - name: Launch an EC2 instance
       amazon.aws.ec2_instance:
