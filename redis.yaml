@@ -8,7 +8,6 @@
     - name: enable redis server
       ansible.builtin.command: dnf module enable redis:7 -y
 
-
     - name: Install redis server
       ansible.builtin.package: 
        name: redis
