@@ -66,5 +66,11 @@
        msg: "{{ catalogue_output }}"
 
    -  name: loading data 
-      ansible.builtin.shell: mongosh --host MONGODB-SERVER-IPADDRESS </app/db/master-data.js
+      ansible.builtin.shell: mongosh --host mongodb.daws86s.cfd </app/db/master-data.js
       when: catalogue_output.stdout | int < 0 
+
+   - name: start and enable catalogue
+     ansible.builtin.service: 
+       name: catalogue 
+       state: started
+       enabled: yes
