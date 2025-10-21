@@ -34,7 +34,7 @@
 
    - name: Extarct catalogue application
      ansible.builtin.unarchive:
-      src: unzip /tmp/catalogue.zip
+      src: /tmp/catalogue.zip
       dest: /app 
       remote_src: yes
 
