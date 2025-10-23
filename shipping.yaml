@@ -82,11 +82,12 @@
         - /app/db/app-user.sql
         - /app/db/master-data.sql
 
-         #After loading db only , should run start and enable        
 
-    - name: start and enable shipping  
-      ansible.builtin.service: 
+ #After loading db only , should run start and enable        
+
+    - name: daemon reload enable and start
+      ansible.builtin.systemd_service: 
        name: shipping
        state: started
-       enabled: yes
-       daemon_reload: yes
+       enabled: true
+       daemon_reload: true
