@@ -77,7 +77,7 @@
         login_user: root 
         login_password: RoboShop@1
         target: "{{ item }}"
-        loop:
+      loop:
         - /app/db/schema.sql
         - /app/db/app-user.sq
         - /app/db/master-data.sql
