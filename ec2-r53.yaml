@@ -40,7 +40,7 @@
     #     msg: "{{ item.instances[0].public_ip_address }}"
     #   loop: "{{ ec2_output.results }}"
 
-    - name: create route53 module
+    - name: create route53 record
       amazon.aws.route53:
        state: present
        zone: "{{ domain_name }}"
@@ -51,11 +51,13 @@
        overwrite: true
       loop: "{{ ec2_output.results }}"
 
-    - name: create route53 module
+
+  # we are creating one record with public only for frontend
+    - name: create route53 record for frontend
       amazon.aws.route53:
        state: present
        zone: "{{ domain_name }}"
-       record: "{{ item.item }}.{{ domain_name }}" #daws86s.fun
+       record: "{{ domain_name }}" #daws86s.fun
        type: A
        ttl: 1
        value: "{{ item.instances[0].public_ip_address }}"
