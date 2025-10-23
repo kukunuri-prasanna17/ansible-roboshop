@@ -60,6 +60,9 @@
     
     - name: move jar file
       ansible.builtin.command: mv target/shipping-1.0.jar shipping.jar 
+      args: 
+         chdir: /app
+
     
     - name: copy mongo repo
       ansible.builtin.copy:

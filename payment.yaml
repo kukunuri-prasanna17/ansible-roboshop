@@ -47,7 +47,7 @@
       remote_src: yes
 
    - name: installing dependence
-     ansible.builtin.pip:pip:
+     ansible.builtin.pip:
        requirments: requirements.txt
        executable: 3.9
        args:
