@@ -10,10 +10,11 @@
    zone_id: Z00127841VMI13X3SDGHZ
    domain_name: "daws86s.cfd"
     # we can instances through command-line
-    # instances:
+   instances:
+   - frontend 
     #  - mongodb
     #  - redis
-    #  - mysql
+    
     #  - rabbitmq
   
   tasks:
