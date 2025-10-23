@@ -63,8 +63,8 @@
     
     - name: copy mongo repo
       ansible.builtin.copy:
-      src: shipping.service
-      dest: /etc/systemd/system/shipping.service
+       src: shipping.service
+       dest: /etc/systemd/system/shipping.service
 
     - name: import shipping  data to mysql
       community.mqsql.mysql_db:
