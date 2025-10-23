@@ -47,11 +47,11 @@
       remote_src: yes
 
    - name: installing dependence
-     community.general.pip:
-      requirments: requirements.txt
-      executable: 3.9
-      args:
-         chdir: /app
+     ansible.builtin.pip:pip:
+       requirments: requirements.txt
+       executable: 3.9
+       args:
+          chdir: /app
       
    - name: copy payment.service
      ansible.builtin.copy:

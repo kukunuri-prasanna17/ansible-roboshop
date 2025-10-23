@@ -25,8 +25,8 @@
 
    - name: removing directory if exists
      ansible.builtin.file:
-     path: /app
-     state: absent
+      path: /app
+      state: absent
 
    - name: create a directory
      ansible.builtin.file:
@@ -36,7 +36,7 @@
    - name: delete catalogue file if exists #delete file
      ansible.builtin.file:
       path: /tmp/catalogue.zip
-     state: absent
+      state: absent
 
    - name: dowloading code 
      ansible.builtin.get_url: 
