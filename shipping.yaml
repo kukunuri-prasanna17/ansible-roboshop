@@ -79,7 +79,7 @@
         target: "{{ item }}"
       loop:
         - /app/db/schema.sql
-        - /app/db/app-user.sq
+        - /app/db/app-user.sql
         - /app/db/master-data.sql
 
  # After loading db only , should run start and enable        
