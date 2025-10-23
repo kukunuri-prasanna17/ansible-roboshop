@@ -80,7 +80,7 @@
       when: catalogue_output.stdout | int < 0 
 
 
-#After loading db only , should run start and enable        
+   #After loading db only , should run start and enable        
 
    - name: start and enable catalogue
      ansible.builtin.service: 
