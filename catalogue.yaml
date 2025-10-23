@@ -57,34 +57,34 @@
       src: catalogue.service
       dest: /etc/systemd/system/catalogue.service
   
-  #  -  name: creating mongo repo
-  #     ansible.builtin.copy:
-  #      src: mongo.repo
-  #      dest: /etc/yum.repos.d/mongo.repo
+   -  name: creating mongo repo
+      ansible.builtin.copy:
+        src: mongo.repo
+        dest: /etc/yum.repos.d/mongo.repo
 
-  #  -  name: installing client mongodb-mongosh
-  #     ansible.builtin.package: 
-  #       name: mongodb-mongosh
-  #       state: present
+   -  name: installing client mongodb-mongosh
+      ansible.builtin.package: 
+        name: mongodb-mongosh
+        state: present
 
-  #  -  name: connect to mongodb catalogue 
-  #     ansible.builtin.command: mongosh mongodb.daws86s.cfd --quiet --eval "db.getMongo().getDBNames().indexOf('catalogue')"
-  #     register: catalogue_output
+   -  name: connect to mongodb catalogue 
+      ansible.builtin.command: mongosh mongodb.daws86s.cfd --quiet --eval "db.getMongo().getDBNames().indexOf('catalogue')"
+      register: catalogue_output
 
-  #  -  name: checking data load
-  #     ansible.builtin.debug:
-  #      msg: "{{ catalogue_output }}"
+   -  name: checking data load
+      ansible.builtin.debug:
+        msg: "{{ catalogue_output }}"
 
-  #  -  name: loading data 
-  #     ansible.builtin.shell: mongosh --host mongodb.daws86s.cfd </app/db/master-data.js
-  #     when: catalogue_output.stdout | int < 0 
+   -  name: loading data 
+      ansible.builtin.shell: mongosh --host mongodb.daws86s.cfd </app/db/master-data.js
+      when: catalogue_output.stdout | int < 0 
 
 
-# After loading db only , should run start and enable        
+#After loading db only , should run start and enable        
 
-  #  - name: start and enable catalogue
-  #    ansible.builtin.service: 
-  #      name: catalogue 
-  #      state: started
-  #      enabled: yes
-  #      daemon_reload: yes
+   - name: start and enable catalogue
+     ansible.builtin.service: 
+       name: catalogue 
+       state: started
+       enabled: yes
+       daemon_reload: yes

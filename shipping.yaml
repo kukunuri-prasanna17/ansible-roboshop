@@ -82,11 +82,11 @@
         - /app/db/app-user.sql
         - /app/db/master-data.sql
 
- # After loading db only , should run start and enable        
+ #After loading db only , should run start and enable        
 
-    # - name: start and enable shipping  
-    #   ansible.builtin.service: 
-    #    name: shipping
-    #    state: started
-    #    enabled: yes
-    #    daemon_reload: yes
+    - name: start and enable shipping  
+      ansible.builtin.service: 
+       name: shipping
+       state: started
+       enabled: yes
+       daemon_reload: yes
