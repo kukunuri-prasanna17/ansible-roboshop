@@ -46,9 +46,9 @@
       dest: /app
       remote_src: yes
 
-   - name: installing dependence
+   - name: installing dependencies
      ansible.builtin.pip:
-       requirments: requirements.txt
+       requirements: requirements.txt
        executable: 3.9
        args:
           chdir: /app
