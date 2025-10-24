@@ -3,7 +3,7 @@
   become: yes 
   tasks: 
    
-   - name: Install a Python package
+   - name: Install packages 
      ansible.builtin.dnf:
        name:  "{{ item }}"
        state: present
@@ -30,7 +30,7 @@
        path: /app
        state: directory
 
-   - name: delete catalogue file if exists #delete file
+   - name: delete payment code file if exists  #delete file if we run infinite times to create fresh one
      ansible.builtin.file:
        path: /tmp/payment.zip
        state: absent

@@ -33,9 +33,9 @@
        path: /app
        state: directory
 
-   - name: delete catalogue file if exists #delete file
+   - name: delete file if exists #delete file
      ansible.builtin.file:
-      path: /tmp/catalogue.zip
+      path: /tmp/user.zip
       state: absent
 
    - name: dowloading code 

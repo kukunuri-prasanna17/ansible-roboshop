@@ -36,7 +36,7 @@
        path: /app
        state: directory
     
-    - name: delete catalogue file if exists #delete file
+    - name: delete shipping file if exists 
       ansible.builtin.file:
        path: /tmp/shipping.zip
        state: absent
@@ -52,7 +52,7 @@
        dest: /app
        remote_src: yes
 
-    - name: installing dependency
+    - name: installing dependencies
       ansible.builtin.command: mvn clean package 
       args: 
          chdir: /app  #change this dir and install dependency
@@ -64,7 +64,7 @@
          chdir: /app
 
     
-    - name: copy mongo repo
+    - name: copy shipping service
       ansible.builtin.copy:
        src: shipping.service
        dest: /etc/systemd/system/shipping.service
