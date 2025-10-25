@@ -1,0 +1,8 @@
+-  name: nginx
+   hosts: dynamic_frontend
+   become: yes
+   tasks:
+     - name: nginx
+       ansible.builtin.dnf:
+        name: nginx
+        state: present
