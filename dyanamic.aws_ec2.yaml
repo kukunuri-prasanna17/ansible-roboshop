@@ -1,12 +1,12 @@
-plugin: amazon.aws.aws_ec2
+plugin: amazon.aws.ec2
 regions:
-- us-east-1
+  - us-east-1          # or your AWS region
 filters:
-  tags:Name: backend
-  instance-state-name: running
-compose: 
- ansible_host: public_ip_address
+  tag:Environment: dev # optional filters
 keyed_groups:
- - key: tags.Name
-   prefix: "dynamic"
-   separator: "_"
+  - key: tags.Name
+    prefix: tag
+hostnames:
+  - dns-name
+compose:
+  ansible_host: public_ip_address
